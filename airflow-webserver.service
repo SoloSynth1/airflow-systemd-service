@@ -1,0 +1,18 @@
+[Unit]
+Description=Airflow webserver daemon
+After=syslog.target network.target
+[Service]
+PIDFile=/run/airflow/webserver.pid
+User=airflow
+Group=airflow
+Type=forking
+ExecStart=/bin/bash -c 'export AIRFLOW_HOME=/etc/airflow ; /usr/bin/airflow webserver -D --pid /run/airflow/webserver.pid'
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+RuntimeDirectory=airflow
+WorkingDirectory=/home/airflow
+Restart=on-failure
+RestartSec=42s
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
