@@ -6,7 +6,7 @@ PIDFile=/run/airflow/scheduler.pid
 User=airflow
 Group=airflow
 Type=forking
-ExecStart=/bin/bash -c 'export AIRFLOW_HOME=/etc/airflow ; /usr/bin/airflow scheduler -D --pid /run/airflow/scheduler.pid'
+ExecStart=/bin/bash -c 'export AIRFLOW_HOME=/etc/airflow ; /usr/local/bin/airflow scheduler -D --pid /run/airflow/scheduler.pid'
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 RuntimeDirectory=airflow

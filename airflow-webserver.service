@@ -6,7 +6,7 @@ PIDFile=/run/airflow/webserver.pid
 User=airflow
 Group=airflow
 Type=forking
-ExecStart=/bin/bash -c 'export AIRFLOW_HOME=/etc/airflow ; /usr/bin/airflow webserver -D --pid /run/airflow/webserver.pid'
+ExecStart=/bin/bash -c 'export AIRFLOW_HOME=/etc/airflow ; /usr/local/bin/airflow webserver -D --pid /run/airflow/webserver.pid'
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 RuntimeDirectory=airflow
